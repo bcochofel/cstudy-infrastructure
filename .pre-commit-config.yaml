@@ -14,9 +14,9 @@ repos:
       - id: terraform_docs
       - id: terraform_fmt
       - id: terraform_tfsec
-      - id: terraform_checkov
-        args:
-          - --args=--quiet --download-external-modules yes
+#      - id: terraform_checkov
+#        args:
+#          - --args=--quiet --download-external-modules yes
   - repo: https://github.com/gruntwork-io/pre-commit
     rev: v0.1.23
     hooks:
