@@ -1,3 +1,7 @@
+resource "random_id" "name" {
+  byte_length = 8
+}
+
 module "naming" {
   #checkov:skip=CKV_TF_1:Ensure Terraform module sources use a commit hash
   source  = "Azure/naming/azurerm"
@@ -53,6 +57,7 @@ module "aks" {
   source  = "Azure/aks/azurerm"
   version = "9.1.0"
 
+  prefix                    = random_id.name.hex
   cluster_name              = module.naming.kubernetes_cluster.name_unique
   resource_group_name       = module.rg.name
   kubernetes_version        = "1.29" # don't specify the patch version!
@@ -71,8 +76,7 @@ module "aks" {
   cluster_log_analytics_workspace_name = module.naming.log_analytics_workspace.name_unique
 
   private_cluster_enabled           = true
-  rbac_aad                          = true
-  rbac_aad_managed                  = true
+  rbac_aad                          = false
   role_based_access_control_enabled = true
 
   sku_tier       = "Standard"
