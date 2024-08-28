@@ -3,7 +3,12 @@
 This repository has Terraform code to deploy a case study infrastructure.
 It uses semantic versioning, conventional commits, and Azure naming convention for resources.
 
-## Terraform Modules
+## [Hashicorp Cloud Platform Integration](sec-hcp-integration)
+
+The GitHub Workflows are integrated with HCP Terraform API.
+More information can be found [here](https://developer.hashicorp.com/terraform/tutorials/automation/github-actions#set-up-hcp-terraform)
+
+## [Terraform Modules](sec-terraform-modules)
 
 The code from this repository uses some modules from both Azure and my own GitHub.
 
@@ -32,6 +37,50 @@ List of static code analysis tools:
 The semantic-release ensures that a new release is created every time a merge to the default branch is triggered, and also generates a CHANGELOG.md file from the conventional commit messages.
 
 Additional modules come from Azure, like the `naming` and `aks`.
+
+## [How-to](sec-how-to)
+
+After cloning this repository, if you want to take advantage of `pre-commit` execute the following commands:
+
+```bash
+# install pre-commit using pip
+pip install pre-commit
+# install pre-commit hooks (move to the repository directory)
+pre-commit install
+pre-commit install --install-hooks -t commit-msg
+# run all checks manually
+# be sure to install all the dependencies:
+# terraform
+# TFlint
+# TFlint azureRM plugin
+# TFsec
+# checkov
+# terraform-docs
+pre-commit run --all-files
+```
+
+Running `pre-commit` will give you feedback in a "shift-left" approach, so you can find typos/errors, and check compliance, before applying your code or running any pipeline.
+
+You can also run semantic-release locally, to check if the workflow is running as expected.
+Execute the following command after installing semantic-release:
+
+```bash
+# you need GITHUB_TOKEN environment variable set
+# more info here: https://github.com/semantic-release/github
+npx semantic-release --dry-run --ci
+```
+
+The code assumes you have Terraform environment variables for the AzureRM provider. You will need to set the following variables:
+
+```bash
+export ARM_CLIENT_ID="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+export ARM_CLIENT_SECRET="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+export ARM_TENANT_ID="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+export ARM_SUBSCRIPTION_ID="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+```
+
+Since everything else uses the HCP Terraform API integration, you just need to edit the code, create a pull request, and a plan will be uploaded to HCP.
+Be sure to check [HCP integration](sec-hcp-integration) section and follow the procedure for your own environment.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -79,3 +128,11 @@ Additional modules come from Azure, like the `naming` and `aks`.
 |------|-------------|
 | <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## [References](sec-references)
+
+- [semantic versioning](https://semver.org/)
+- [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
+- [keep a changelog](https://keepachangelog.com/en/1.1.0/)
+- [pre-commit](https://pre-commit.com/)
+- [semantic-release](https://semantic-release.gitbook.io/semantic-release)
