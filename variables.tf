@@ -13,5 +13,13 @@ variable "location" {
 variable "environment" {
   description = "Environment for Azure naming convention."
   type        = string
-  default     = "sand"
+  default     = "sandbox"
+}
+
+variable "tags" {
+  description = "A mapping of tags which should be assigned to Resources."
+  type        = map(string)
+  default = {
+    ManagedBy = "Terraform"
+  }
 }

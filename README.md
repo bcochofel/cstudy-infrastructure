@@ -1,6 +1,7 @@
 # Case-Study Infrastructure
 
 This repository has Terraform code to deploy a case study infrastructure.
+It uses semantic versioning, conventional commits, and Azure naming convention for resources.
 
 ## Terraform Modules
 
@@ -29,3 +30,44 @@ List of static code analysis tools:
 - [terraform-docs](https://terraform-docs.io/)
 
 The semantic-release ensures that a new release is created every time a merge to the default branch is triggered, and also generates a CHANGELOG.md file from the conventional commit messages.
+
+Additional modules come from Azure, like the `naming` and `aks`.
+
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.9.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 3.106.1, < 4.0 |
+
+## Providers
+
+No providers.
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_naming"></a> [naming](#module\_naming) | Azure/naming/azurerm | 0.4.1 |
+| <a name="module_rg"></a> [rg](#module\_rg) | bcochofel/resource-group/azurerm | 1.6.0 |
+
+## Resources
+
+No resources.
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_environment"></a> [environment](#input\_environment) | Environment for Azure naming convention. | `string` | `"sandbox"` | no |
+| <a name="input_location"></a> [location](#input\_location) | Azure Region to create resource. | `string` | `"northeurope"` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags which should be assigned to Resources. | `map(string)` | <pre>{<br>  "ManagedBy": "Terraform"<br>}</pre> | no |
+| <a name="input_workload"></a> [workload](#input\_workload) | Workload for Azure naming convention. | `string` | `"demo"` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | n/a |
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
