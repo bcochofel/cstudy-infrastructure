@@ -79,6 +79,6 @@ module "aks" {
   vnet_subnet_id = module.snet.id
 
   depends_on = [
-    azurerm_subnet.test,
+    module.snet,
   ]
 }
