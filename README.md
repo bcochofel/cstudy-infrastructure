@@ -51,6 +51,8 @@ No providers.
 |------|--------|---------|
 | <a name="module_naming"></a> [naming](#module\_naming) | Azure/naming/azurerm | 0.4.1 |
 | <a name="module_rg"></a> [rg](#module\_rg) | bcochofel/resource-group/azurerm | 1.6.0 |
+| <a name="module_snet"></a> [snet](#module\_snet) | bcochofel/subnet/azurerm | 1.4.0 |
+| <a name="module_vnet"></a> [vnet](#module\_vnet) | bcochofel/virtual-network/azurerm | 1.3.0 |
 
 ## Resources
 
