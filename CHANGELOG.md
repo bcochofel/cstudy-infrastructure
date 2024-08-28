@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.0](https://github.com/bcochofel/cstudy-infrastructure/compare/1.1.0...1.2.0) (2024-08-28)
+
+### Features
+
+* Network creation ([e60fb69](https://github.com/bcochofel/cstudy-infrastructure/commit/e60fb69caac5cc17bc79a8693ee1cfa16b4333ec))
+
 ## [1.1.0](https://github.com/bcochofel/cstudy-infrastructure/compare/1.0.0...1.1.0) (2024-08-28)
 
 ### Features
