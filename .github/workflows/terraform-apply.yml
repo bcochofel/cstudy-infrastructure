@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read # for checkout
+
 env:
   TF_CLOUD_ORGANIZATION: "azure-bcochofel-sandbox-001"
   TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"

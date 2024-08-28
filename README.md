@@ -1,6 +1,7 @@
 # Case-Study Infrastructure
 
 This repository has Terraform code to deploy a case study infrastructure.
+It uses semantic versioning, conventional commits, and Azure naming convention for resources.
 
 ## Terraform Modules
 
@@ -29,3 +30,8 @@ List of static code analysis tools:
 - [terraform-docs](https://terraform-docs.io/)
 
 The semantic-release ensures that a new release is created every time a merge to the default branch is triggered, and also generates a CHANGELOG.md file from the conventional commit messages.
+
+Additional modules come from Azure, like the `naming` and `aks`.
+
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
