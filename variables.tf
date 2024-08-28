@@ -20,7 +20,6 @@ variable "tags" {
   description = "A mapping of tags which should be assigned to Resources."
   type        = map(string)
   default = {
-    ManagedBy   = "Terraform"
-    Environment = var.environment
+    ManagedBy = "Terraform"
   }
 }
