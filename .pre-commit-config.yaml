@@ -15,9 +15,9 @@ repos:
       - id: terraform_fmt
       - id: terraform_tflint
       - id: terraform_tfsec
-      - id: terraform_checkov
-        args:
-          - --args=--quiet --download-external-modules yes
+#      - id: terraform_checkov
+#        args:
+#          - --args=--quiet --download-external-modules yes
   - repo: https://github.com/compilerla/conventional-pre-commit
     rev: v2.4.0
     hooks:

@@ -1,3 +1,7 @@
+resource "random_id" "name" {
+  byte_length = 8
+}
+
 module "naming" {
   #checkov:skip=CKV_TF_1:Ensure Terraform module sources use a commit hash
   source  = "Azure/naming/azurerm"
@@ -46,4 +50,39 @@ module "snet" {
   address_prefixes        = ["10.0.0.0/24"]
 
   tags = var.tags
+}
+
+module "aks" {
+  #checkov:skip=CKV_TF_1:Ensure Terraform module sources use a commit hash
+  source  = "Azure/aks/azurerm"
+  version = "9.1.0"
+
+  prefix                    = random_id.name.hex
+  cluster_name              = module.naming.kubernetes_cluster.name_unique
+  resource_group_name       = module.rg.name
+  kubernetes_version        = "1.29" # don't specify the patch version!
+  automatic_channel_upgrade = "patch"
+  agents_availability_zones = ["1", "2", "3"]
+  agents_count              = null
+  agents_max_count          = 2
+  agents_max_pods           = 100
+  agents_min_count          = 1
+  agents_pool_name          = "testnodepool"
+  agents_type               = "VirtualMachineScaleSets"
+  azure_policy_enabled      = true
+  enable_auto_scaling       = true
+
+  log_analytics_workspace_enabled      = true
+  cluster_log_analytics_workspace_name = module.naming.log_analytics_workspace.name_unique
+
+  private_cluster_enabled           = true
+  rbac_aad                          = false
+  role_based_access_control_enabled = true
+
+  sku_tier       = "Standard"
+  vnet_subnet_id = module.snet.id
+
+  depends_on = [
+    module.snet,
+  ]
 }

@@ -80,7 +80,7 @@ export ARM_SUBSCRIPTION_ID="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 Since everything else uses the HCP Terraform API integration, you just need to edit the code, create a pull request, and a plan will be uploaded to HCP.
-Be sure to check [HCP integration](section-hcp-integration) section and follow the procedure for your own environment.
+Be sure to check [HCP integration](sec-hcp-integration) section and follow the procedure for your own environment.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -89,15 +89,19 @@ Be sure to check [HCP integration](section-hcp-integration) section and follow t
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.9.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 3.106.1, < 4.0 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | 3.3.2 |
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_random"></a> [random](#provider\_random) | 3.3.2 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_aks"></a> [aks](#module\_aks) | Azure/aks/azurerm | 9.1.0 |
 | <a name="module_naming"></a> [naming](#module\_naming) | Azure/naming/azurerm | 0.4.1 |
 | <a name="module_rg"></a> [rg](#module\_rg) | bcochofel/resource-group/azurerm | 1.6.0 |
 | <a name="module_snet"></a> [snet](#module\_snet) | bcochofel/subnet/azurerm | 1.4.0 |
@@ -105,7 +109,9 @@ No providers.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [random_id.name](https://registry.terraform.io/providers/hashicorp/random/3.3.2/docs/resources/id) | resource |
 
 ## Inputs
 
