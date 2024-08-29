@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.0](https://github.com/bcochofel/cstudy-infrastructure/compare/1.2.0...1.3.0) (2024-08-29)
+
+### Features
+
+* Kubernetes cluster with availability zones and auto-scaling ([f67fad0](https://github.com/bcochofel/cstudy-infrastructure/commit/f67fad0bf3a8e5e9db731553a1c56fe4da616133))
+
+### Bug Fixes
+
+* AKS depends on subnet ([db9c94b](https://github.com/bcochofel/cstudy-infrastructure/commit/db9c94b1f7b5160dc79e35ac633ffbbdf232392f))
+* Minor issues ([0aaf20f](https://github.com/bcochofel/cstudy-infrastructure/commit/0aaf20f3e76768fbadf0c3ce0ee9c0d4bd408ce6))
+
 ## [1.2.0](https://github.com/bcochofel/cstudy-infrastructure/compare/1.1.0...1.2.0) (2024-08-28)
 
 ### Features
